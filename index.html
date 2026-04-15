@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>QR Code Generator</title>
+    <!-- Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="professional-header">
+        <div class="nav-container">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>QR<span style="font-weight:500"> Maker</span></h1>
+                    <span>Generate & Download in Seconds</span>
+                </div>
+            </div>
+            <div class="header-social">
+                <a href="https://github.com/hatesh1" target="_blank" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/" target="_blank" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/923332928556" target="_blank" aria-label="WhatsApp"><i
+                        class="fab fa-whatsapp"></i></a>
+                <a href="mailto:hateshlakhani9@gmail.com" target="_blank" aria-label="Email"><i
+                        class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- QR Code Generator -->
+    <main class="main-content">
+        <div class="qr-card">
+            <div class="card-inner">
+                <div class="badge-tag">
+                    <i class="fas fa-bolt"></i> Instant generation · No limits
+                </div>
+                <h2>Generate & Download</h2>
+                <div class="sub">Connect physical world with digital content</div>
+
+                <!-- Input area -->
+                <div class="input-group">
+                    <div class="input-label">
+                        <i class="fas fa-pen-fancy"></i>
+                        <span>Content / URL</span>
+                    </div>
+                    <input type="text" class="input-field" id="qrInput"
+                        placeholder="https://yourportfolio.com,  text, or any data...">
+                </div>
+
+                <!-- Action buttons -->
+                <div class="action-buttons">
+                    <button class="btn-generate" id="generateBtn">
+                        <i class="fas fa-qrcode"></i> Generate QR
+                    </button>
+                    <button class="btn-download" id="downloadBtn">
+                        <i class="fas fa-download"></i> Download PNG
+                    </button>
+                </div>
+
+                <!-- QR code display (dynamic) -->
+                <div class="qr-box" id="qrBox">
+                    <img class="img" id="qrImage" alt="QR Code" src="">
+                    <div class="qr-caption">
+                        <i class="fas fa-check-circle" style="color:#2c8daf;"></i> Ready to scan · high resolution
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="footer-container">
+            <div class="footer-copyright">
+                <i class="far fa-copyright"></i> Designed & Developed by <strong>Hatesh Lakhani</strong> · 2026
+            </div>
+            <div class="footer-social-links">
+                <a href="https://github.com/hatesh1" target="_blank"><i class="fab fa-github"></i>
+                    <span>GitHub</span></a>
+                <a href="https://linkedin.com/in/" target="_blank"><i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span></a>
+                <a href="https://wa.me/923332928556" target="_blank"><i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span></a>
+                <a href="mailto:hateshlakhani9@gmail.com" target="_blank"><i class="fas fa-envelope"></i>
+                    <span>Email</span></a>
+            </div>
+            <div class="footer-credit">
+                 ✨ QR Code Generator · Instant & Free
+            </div>
+        </div>
+    </footer>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Script -->
+    <script src="/script.js"></script>
+</body>
+
+</html>
