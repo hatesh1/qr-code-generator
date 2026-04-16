@@ -30,6 +30,9 @@ function showSuccessToast(message) {
         showConfirmButton: false,
         timer: 1800,
         timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.style.borderLeft = '4px solid #2563eb';
+        }
     });
     Toast.fire({
         icon: 'success',
@@ -59,6 +62,10 @@ function generateQRCode(event) {
         return;
     }
 
+    generateButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+    generateButton.style.opacity = "0.7";
+    generateButton.style.pointerEvents = "none";
+
     let trimmedData = rawValue.trim();
     // encodeURIComponent for safety
     let qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(trimmedData)}&margin=10`;
@@ -70,12 +77,18 @@ function generateQRCode(event) {
     qrImage.onload = () => {
         qrBoxDiv.classList.add("active");
         showSuccessToast("QR code generated successfully!");
+        generateButton.innerHTML = '<i class="fas fa-qrcode"></i> Generate QR';
+        generateButton.style.opacity = "1";
+        generateButton.style.pointerEvents = "auto";
     };
 
     // fallback if load fails
     qrImage.onerror = () => {
         qrBoxDiv.classList.remove("active");
         showErrorAlert("QR generation failed. Check your internet or try again.");
+        generateButton.innerHTML = '<i class="fas fa-qrcode"></i> Generate QR';
+        generateButton.style.opacity = "1";
+        generateButton.style.pointerEvents = "auto";
     };
 }
 
@@ -143,7 +156,6 @@ async function downloadQR() {
 generateButton.addEventListener("click", generateQRCode);
 downloadButton.addEventListener("click", downloadQR);
 
-// Optional: pressing 'Enter' in input field triggers generation
 inputElement.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
         e.preventDefault();
@@ -154,11 +166,15 @@ inputElement.addEventListener("keypress", (e) => {
 const inputField = inputElement;
 inputField.addEventListener("blur", function () {
     if (inputField.value.trim() === "") {
-        // subtle reminder: but not annoying
     }
 });
 
-qrBoxDiv.classList.remove("active");
-qrImage.src = "";
-qrImage.alt = "QR preview will appear here";
-downloadButton.style.display = "none";
+function resetUI() {
+    qrBoxDiv.classList.remove("active");
+    qrImage.src = "";
+    qrImage.alt = "QR preview will appear here";
+    downloadButton.style.display = "none";
+    generateButton.style.background = "var(--primary-blue)";
+}
+
+resetUI();
